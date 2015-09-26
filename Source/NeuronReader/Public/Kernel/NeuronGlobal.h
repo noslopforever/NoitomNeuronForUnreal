@@ -17,7 +17,7 @@ public:
 
 	/** Get all sources
 	*/
-	virtual void GetSources(TArray<FNeuronSourceSharePtr> OutSources) = 0;
+	virtual void GetSources(TArray<FNeuronSourceSharePtr>& OutSources) = 0;
 
 	/** return instantly if exist, or create a new one.
 	*	\remarks MUST called at GameThread

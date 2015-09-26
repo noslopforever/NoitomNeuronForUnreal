@@ -23,6 +23,14 @@ FNeuronSourceActor::~FNeuronSourceActor()
 //------------------------------------------------------------------------
 void FNeuronSourceActor::GetBoneData(ENeuronBones::Type InBoneType, FVector& OutPosition, FRotator& OutRotation)
 {
+	FNeuronBoneInfo& bone = (*UsingBuffer)[(int32)InBoneType];
+	OutPosition = bone.Position;
+	OutRotation = bone.Rotation;
+}
+
+//------------------------------------------------------------------------
+void FNeuronSourceActor::GetBoneDataSafeLock(ENeuronBones::Type InBoneType, FVector& OutPosition, FRotator& OutRotation)
+{
 	CriticalSection.Lock();
 	FNeuronBoneInfo& bone = (*UsingBuffer)[(int32)InBoneType];
 	CriticalSection.Unlock();
@@ -87,18 +95,19 @@ void FNeuronSourceActor::_OnReceiveFrameData(float* InData, int32 InDataCount, b
 		(*ShadowBuffer)[i].Rotation = RotFromNeuronToUE(InData[dataIndex + 0], InData[dataIndex + 1], InData[dataIndex + 2]);
 		dataIndex += 3;
 	}
+}
 
-	// swap to using buffer
-	{
-		FScopeLock Lock(&CriticalSection);
+//------------------------------------------------------------------------
+void FNeuronSourceActor::_SwapBuffer()
+{
+	FScopeLock Lock(&CriticalSection);
 
-		// time of last data frame
-		LastFrameTime = FDateTime::Now();
-		// swap buffers
-		TArray<FNeuronBoneInfo>* swapBuffer = UsingBuffer;
-		UsingBuffer = ShadowBuffer;
-		ShadowBuffer = swapBuffer;
-	}
+	// time of last data frame
+	LastFrameTime = FDateTime::Now();
+	// swap buffers
+	TArray<FNeuronBoneInfo>* swapBuffer = UsingBuffer;
+	UsingBuffer = ShadowBuffer;
+	ShadowBuffer = swapBuffer;
 }
 
 //------------------------------------------------------------------------

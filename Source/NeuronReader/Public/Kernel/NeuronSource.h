@@ -122,6 +122,9 @@ public:
 	*/
 	FNeuronSourceActorSharePtr FindActor(int32 InActorID);
 
+	/** Get all source actors */
+	TArray<FNeuronSourceActorSharePtr> GetSourceActors();
+
 private:
 
 	/** Called by UNeuronGlobal when successfully created.

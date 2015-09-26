@@ -45,6 +45,8 @@ FNeuronSource::~FNeuronSource()
 //------------------------------------------------------------------------
 FNeuronSourceActorSharePtr FNeuronSource::AcquireActor(int32 InActorID)
 {
+	FScopeLock lock(&CriticalSection);
+
 	FNeuronSourceActorSharePtr ptr = FindActor(InActorID);
 	if (ptr.IsValid()) {
 		return ptr;
@@ -64,6 +66,13 @@ FNeuronSourceActorSharePtr FNeuronSource::FindActor(int32 InActorID)
 		}
 	}
 	return nullptr;
+}
+
+//------------------------------------------------------------------------
+TArray<FNeuronSourceActorSharePtr> FNeuronSource::GetSourceActors()
+{
+	FScopeLock lock(&CriticalSection);
+	return SourceActors;
 }
 
 //------------------------------------------------------------------------
@@ -134,16 +143,14 @@ void FNeuronSource::_DoDataTransfer()
 //------------------------------------------------------------------------
 void _NeuronDataReaderCallbacks::_FrameDataCB(void* customedObj, SOCKET_REF sender, BvhDataHeaderEx* header, float* data)
 {
+	// CAUTION, this function is called at data-track thread, not game thread.
 	FNeuronSource* ThisObj = reinterpret_cast<FNeuronSource*>(customedObj);
 	check(ThisObj == customedObj);
 
 	int32 avatarIndex = header->AvatarIndex;
 
-	// not find, try create.
-	FNeuronSourceActorSharePtr actor = ThisObj->FindActor(avatarIndex);
-	if (false == actor.IsValid()) {
-		actor = ThisObj->_CreateSourceActor(avatarIndex);
-	}
+	// try acquire actor
+	FNeuronSourceActorSharePtr actor = ThisObj->AcquireActor(avatarIndex);
 
 	// hey, data is coming :-).
 	if (actor.IsValid()) {

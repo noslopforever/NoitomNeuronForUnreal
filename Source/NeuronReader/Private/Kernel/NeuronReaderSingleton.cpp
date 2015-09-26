@@ -30,7 +30,7 @@ FNeuronReaderSingleton::~FNeuronReaderSingleton()
 }
 
 //------------------------------------------------------------------------
-void FNeuronReaderSingleton::GetSources(TArray<FNeuronSourceSharePtr> OutSources)
+void FNeuronReaderSingleton::GetSources(TArray<FNeuronSourceSharePtr>& OutSources)
 {
 	FScopeLock Lock(&CriticalSection);
 	OutSources = ConnectedSources;
@@ -79,6 +79,28 @@ void FNeuronReaderSingleton::DisconnectSource(FNeuronSourceSharePtr InSource)
 	InSource->_PostDestroy();
 
 	UE_LOG(LogNeuron, Log, TEXT("Source connection successfully destroyed!"));
+}
+
+//------------------------------------------------------------------------
+void FNeuronReaderSingleton::Tick(float DeltaTime)
+{
+	// swap buffer each frame
+	FScopeLock Lock(&CriticalSection);
+	for (auto srcPtr : ConnectedSources)
+	{
+		TArray<FNeuronSourceActorSharePtr> srcActorArray = srcPtr->GetSourceActors();
+		for (auto srcActorPtr : srcActorArray)
+		{
+			srcActorPtr->_SwapBuffer();
+		}
+	}
+
+}
+
+//------------------------------------------------------------------------
+TStatId FNeuronReaderSingleton::GetStatId() const
+{
+	RETURN_QUICK_DECLARE_CYCLE_STAT(FNeuronReaderSingleton, STATGROUP_Tickables);
 }
 
 //------------------------------------------------------------------------

@@ -72,9 +72,14 @@ public:
 		return ActorID;
 	}
 
-	/** Get bone data of last frame.
+	/** Get bone data of last frame. Game thread use only.
 	*/
 	void GetBoneData(ENeuronBones::Type InBoneType, FVector& OutPosition, FRotator& OutRotation);
+
+	/** Get bone data of last frame, with buffer safe lock.
+	*	If called in non-game and non-data threads, please use this.
+	*/
+	void GetBoneDataSafeLock(ENeuronBones::Type InBoneType, FVector& OutPosition, FRotator& OutRotation);
 
 private:
 
@@ -96,5 +101,11 @@ private:
 	*/
 	void _OnReceiveFrameData(float* InData, int32 InDataCount, bool InDisplacement);
 	friend class _NeuronDataReaderCallbacks;
+
+	/** swap read and shadow buffer
+	*	Swap is proc by singleton automatically at each frame in the game thread.
+	*/
+	void _SwapBuffer();
+	friend class FNeuronReaderSingleton;
 
 };

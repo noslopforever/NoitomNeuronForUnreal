@@ -1,4 +1,4 @@
-# Noitom Neuron for UnrealEngine4.x
+# Noitom Neuron for UnrealEngine4.x (Unofficial)
 Thanks for Noitom's excellent work!!
 
 Noitom Neuron Perception Neuron data integration plugin for UnrealEngine4 under MIT License.
