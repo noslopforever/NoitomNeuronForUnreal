@@ -26,6 +26,13 @@ namespace UnrealBuildTool.Rules
                 }
             );
 
+            // if Editor, include Editor module
+            if (Target.Type == TargetRules.TargetType.Editor)
+            {
+                PublicDependencyModuleNames.Add("BlueprintGraph");
+                PublicDependencyModuleNames.Add("AnimGraph");
+            }
+
             // SDK integration
             AddThirdPartyPrivateStaticDependencies(Target, "NeuronDataReaderSDK");
         }

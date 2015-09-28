@@ -16,15 +16,15 @@ public:
 	// 
 	// current running configurations
 	//
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Noitom|Neuron")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Noitom|Neuron")
 	FString UsingAddress;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Noitom|Neuron")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Noitom|Neuron")
 	int32 UsingPort;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Noitom|Neuron")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Noitom|Neuron")
 	int32 UsingCmdPort;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Noitom|Neuron")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Noitom|Neuron")
 	int32 UsingActorID;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Noitom|Neuron")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Noitom|Neuron")
 	TEnumAsByte<ENeuronSocketType::Type> UsingSocketType;
 
 	/** Neuron source
@@ -37,12 +37,18 @@ public:
 
 public:
 
+	/** Is connect
+	*/
 	UFUNCTION(BlueprintPure, Category = "Noitom|Neuron")
 	bool IsConnect();
 
+	/** connect to source
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Noitom|Neuron")
 	void Connect(FString InAddress, int32 InPort, int32 InActorID, ENeuronSocketType::Type InSocketType);
 
+	/** Get bone data
+	*/
 	UFUNCTION(BlueprintPure, Category = "Noitom|Neuron")
 	void GetBoneData(ENeuronBones::Type InBoneId, bool& OutIsValid, FVector& OutPosition, FRotator& OutRotation);
 

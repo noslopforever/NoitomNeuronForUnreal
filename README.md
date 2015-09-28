@@ -1,13 +1,13 @@
 # Noitom Neuron for UnrealEngine4.x (Unofficial)
 Thanks for Noitom's excellent work!!
 
-Noitom Neuron Perception Neuron data integration plugin for UnrealEngine4 under MIT License.
+Noitom Neuron Perception data integration plugin for UnrealEngine4 under MIT License.
 
-This is not an official project, so you may use it carefully in commercial purpose. Noitom's official support may not contain this project.
+This is not an official project, so you may use it carefully in commercial purpose. Noitom may not support this project.
 
 Please select rotation output 'ZYX' type in NeuronAxis. We only support this output type now(v0.1), for other types will spend more time for calculation at runtime.
 
-Issues, bugs and suggestions should be reported to noslopdev@hotmail.com now.
+Issues and bugs should be reported to noslopdev@hotmail.com now.
 
 # Current Version
 ## v0.1 2015-9-26
