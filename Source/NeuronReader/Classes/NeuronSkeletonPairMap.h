@@ -24,11 +24,21 @@ public:
 };
 
 
+UENUM()
+enum ETestCommand
+{
+	Identity,
+	Neuron,
+	This,
+	InvNeuron,
+	InvThis,
+};
+
 /** AnimNode : Neuron skeleton pair
 *	Similar as AnimNode_WheelHandler
 */
 USTRUCT()
-struct NEURONREADER_API FAnimNode_NeuronSkeletonPair : public FAnimNode_SkeletalControlBase
+struct NEURONREADER_API FAnimNode_AutoNeuronSkeletonMatch : public FAnimNode_SkeletalControlBase
 {
 	GENERATED_USTRUCT_BODY()
 public:
@@ -46,7 +56,7 @@ public:
 
 public:
 
-	FAnimNode_NeuronSkeletonPair();
+	FAnimNode_AutoNeuronSkeletonMatch();
 
 	// FAnimNode_Base interface
 	virtual void GatherDebugData(FNodeDebugData& DebugData) override;
@@ -66,12 +76,12 @@ private:
 
 
 UCLASS(MinimalAPI, meta = (Keywords = "Neuron Noitom"))
-class UAnimGraphNode_NeuronSkeletonPair : public UAnimGraphNode_SkeletalControlBase
+class UAnimGraphNode_AutoNeuronSkeletonMatch : public UAnimGraphNode_SkeletalControlBase
 {
 	GENERATED_UCLASS_BODY()
 
 	UPROPERTY(EditAnywhere, Category = Settings)
-	FAnimNode_NeuronSkeletonPair Node;
+	FAnimNode_AutoNeuronSkeletonMatch Node;
 
 public:
 	// UEdGraphNode interface

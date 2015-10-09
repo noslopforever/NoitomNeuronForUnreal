@@ -23,9 +23,12 @@ FNeuronSourceActor::~FNeuronSourceActor()
 //------------------------------------------------------------------------
 void FNeuronSourceActor::GetBoneData(ENeuronBones::Type InBoneType, FVector& OutPosition, FRotator& OutRotation)
 {
-	FNeuronBoneInfo& bone = (*UsingBuffer)[(int32)InBoneType];
-	OutPosition = bone.Position;
-	OutRotation = bone.Rotation;
+	if ((int32)InBoneType >= 0 && (int32)InBoneType < (int32)ENeuronBones::Type::NumOfBones)
+	{
+		FNeuronBoneInfo& bone = (*UsingBuffer)[(int32)InBoneType];
+		OutPosition = bone.Position;
+		OutRotation = bone.Rotation;
+	}
 }
 
 //------------------------------------------------------------------------

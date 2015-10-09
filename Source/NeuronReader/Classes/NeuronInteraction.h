@@ -32,3 +32,4 @@ public:
 	void GetBoneData(ENeuronBones::Type InBoneId, bool& OutIsValid, FVector& OutPosition, FRotator& OutRotation);
 
 };
+
