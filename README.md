@@ -10,6 +10,27 @@ Please select rotation output 'ZYX' type in NeuronAxis. We only support this out
 Issues and bugs should be reported to noslopdev@hotmail.com now.
 
 # Current Version
+## v0.2 2015-10-15
+
+Based on NeuronAxis version 3.5.19.1225 and SDK Version beta 11 (@Realease Date: 2015-4-30).
+
+#### Update
+Project: Modify directory architectures. Add a sample uproject. And integrate plugins to it by default.
+
+Add: Should apply NeuronAxis's bone data to your own skeleton in AnimBlueprint by 'Do Neuron Skeleton' node.
+
+Add: Should apply NeuronAxis's bone data to your game logic, by UNeuronBPLibrary's methods.
+
+Fix: NeuronAnimInstance now use UNeuronActorProxy to handle datas, not link to Neuron itself.
+
+Fix: Plugins and binaries shall add to your project, not UnrealEngine.
+
+#### Known issus:
+
+There is some issus when apply neuron motion to game character. It trembles, and cannot apply Z-space movement.
+
+
+
 ## v0.1 2015-9-26
 
 Based on NeuronAxis version 3.5.19.1225 and SDK Version beta 11 (@Realease Date: 2015-4-30).

@@ -1,0 +1,46 @@
+NeuronDataReader library Release Notes
+------------------------------------------
+Release date: 30.4.2015
+Version: beta 11
+
+NeuronDataReader is a plugin/library used to sync skeleton state or parameters with server by TCP/IP.
+
+There are sections for the following areas:
+    SDK features
+    Changes in functionality
+    Deprecated/obsolete functionality
+    Fixed bugs
+    Known bugs
+
+
+SDK Features
+------------
+
+* Receiving and parsing real-time BVH reading from binary stream.
+
+* Receiving and sync data from multi-pc
+
+
+
+Changes in Functionality
+------------------------
+* Add multi-client mode. Receiving and sync data from multi-pc
+
+
+Deprecated/Obsolete Functionality
+---------------------------------
+
+Add SockRef to identify socket in multi-client. singoten mode is deprecated.
+
+
+Fixed bugs
+-------------
+
+
+
+Known bugs
+-------------
+
+
+
+Any bugs or problems? please contact us contact@neuronmocap.com

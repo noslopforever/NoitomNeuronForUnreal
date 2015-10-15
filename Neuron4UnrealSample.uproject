@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7FCD2836-46F9-2A3D-2BD7-5C9189364BDF}",
+	"Category": "",
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "Substance",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/offers/2f6439c2f9584f49809d9b13b16c2ba4"
+		},
+		{
+			"Name": "NoitomNeuronForUnreal",
+			"Enabled": false
+		}
+	]
+}

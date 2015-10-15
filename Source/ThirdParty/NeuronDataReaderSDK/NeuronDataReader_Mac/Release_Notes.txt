@@ -1,0 +1,54 @@
+PNBVHDataReader Plug-in b10 Release Notes
+------------------------------------------
+Release date: 20.3.2015
+Version: beta 10
+
+PNBVHDataReader is a plugin used to read skeleton data from server by TCP/IP to save work.
+
+There are sections for the following areas:
+	SDK features
+	Changes in functionality
+	Deprecated/obsolete functionality
+	Closed issues
+	Known issues
+
+SDK Features
+------------
+
+* Receiving and parsing real-time BVH reading from binary stream.
+
+* Receiving and sync data from multi-pc
+
+
+
+Changes in Functionality
+------------------------
+* Add multi-client mode. Receiving and sync data from multi-pc
+
+
+Deprecated/Obsolete Functionality
+---------------------------------
+
+Add SockRef to identify socket in multi-client. singoten mode is deprecated.
+
+
+Closed Issues
+-------------
+
+
+
+Troubleshooting
+---------------
+
+
+Closed Issues
+-------------
+
+
+
+
+Beta 10 - Known Issues
+---------------------
+
+
+Any bugs or problems? please email us contact@neuronmocap.com

@@ -1,0 +1,30 @@
+{
+    "PluginFileVersion": 1,
+
+    "FriendlyName": "Neuron4Unreal",
+    "Version": 1,
+    "VersionName": "0.1",
+    "CreatedBy": "noslopforever",
+    "CreatedByURL": "http://github.com/noslopforever",
+    "Description": "Noitom Perception Neuron plugin for UnrealEngine",
+    "Category": "Virtual Reality.Noitom",
+    "EnabledByDefault": "false",
+    "IsBetaVersion": true,
+    "CanContainContent": true,
+
+    "Modules": [
+        {
+            "Name": "NeuronReader",
+            "Type": "Runtime",
+            "WhitelistPlatforms": [ "Win32", "Win64", "Mac" ],
+            "LoadingPhase": "PreDefault"
+        },
+        {
+            "Name": "NeuronEditor",
+            "Type": "Editor",
+            "WhitelistPlatforms": [ "Win32", "Win64", "Mac" ],
+            "LoadingPhase": "PreDefault"
+        }
+
+    ]
+}
